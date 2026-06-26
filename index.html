@@ -2359,43 +2359,15 @@
       margin: 0 auto 14px
     }
 
-    .kulhad {
+    .chai-glass {
       position: absolute;
       left: 50%;
-      bottom: 0;
+      bottom: -6px;
       transform: translateX(-50%);
-      width: 58px;
-      height: 62px;
-      clip-path: polygon(8% 0, 92% 0, 78% 100%, 22% 100%);
-      border-radius: 3px 3px 7px 7px;
-      background:
-        linear-gradient(90deg, rgba(0, 0, 0, .32) 0%, rgba(0, 0, 0, 0) 22%, rgba(255, 236, 200, .20) 48%, rgba(0, 0, 0, 0) 74%, rgba(0, 0, 0, .36) 100%),
-        repeating-linear-gradient(0deg, rgba(70, 30, 12, .20) 0 7px, rgba(120, 55, 24, 0) 7px 13px),
-        linear-gradient(180deg, #d3742f 0%, #b1551f 46%, #8a3d15 100%)
-    }
-
-    .kulhad::before {
-      content: "";
-      position: absolute;
-      top: 4px;
-      left: 11%;
-      right: 11%;
-      height: 11px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at 50% 32%, #3a1c0c, #1f0f05);
-      box-shadow: 0 0 5px rgba(0, 0, 0, .45), inset 0 2px 3px rgba(255, 170, 90, .28)
-    }
-
-    .kulhad::after {
-      content: "";
-      position: absolute;
-      top: 1px;
-      left: 7%;
-      right: 7%;
-      height: 7px;
-      border-radius: 50%;
-      border: 2px solid rgba(224, 154, 94, .65);
-      border-bottom: 0
+      width: 72px;
+      height: 86px;
+      z-index: 2;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
     }
 
     .steam {
@@ -3787,8 +3759,43 @@
     const steps = $('#steps');
     PROCESS.forEach(s => {
       const el = document.createElement('div'); el.className = 'step reveal';
-      el.innerHTML = `<div class="cup"><span class="steam"></span><span class="steam s2"></span><span class="steam s3"></span><div class="kulhad"></div></div>
-    <div class="num">${s.n}</div><h3>${s.en}</h3><div class="hi deva">${s.hi}</div><p>${s.p}</p>`;
+      el.innerHTML = `<div class="cup"><span class="steam"></span><span class="steam s2"></span><span class="steam s3"></span>
+        <svg class="chai-glass" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#6e2d09" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Lower tea body -->
+            <path d="M 21.5 61 L 25.5 102 Q 50 107 74.5 102 L 78.5 61 Z" fill="#ce773b" stroke="none" />
+            <path d="M 25.5 102 Q 50 107 74.5 102 Z" fill="#9e4e1a" stroke="none" />
+            <!-- Upper tea body -->
+            <path d="M 18.5 35 L 21.5 61 L 78.5 61 L 81.5 35 Z" fill="#e89454" stroke="none" />
+            <!-- Tea surface -->
+            <ellipse cx="50" cy="35" rx="31.5" ry="6" fill="#fec485" stroke="#6e2d09" stroke-width="1.8" />
+            <ellipse cx="49" cy="35.5" rx="27" ry="4" fill="#e89454" stroke="none" />
+            <!-- Flutes / Ridges in lower half -->
+            <path d="M 21.5 61 Q 50 66 78.5 61 L 74.5 102 Q 50 107 25.5 102 Z" fill="none" />
+            <path d="M 22 62 Q 28 58 35 62.5 L 37.5 104" fill="none" />
+            <path d="M 35 62.5 Q 43 59 50 63.5 L 50 104.5" fill="none" />
+            <path d="M 50 63.5 Q 57 59 65 62.5 L 62.5 104" fill="none" />
+            <path d="M 65 62.5 Q 72 58 78 62" fill="none" />
+            <path d="M 37.5 104 L 35 62.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" />
+            <path d="M 50 104.5 L 50 63.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" />
+            <path d="M 62.5 104 L 65 62.5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3" />
+            <!-- Glass Base -->
+            <path d="M 25.5 102 L 26.5 112 Q 50 116 73.5 112 L 74.5 102 Z" fill="#ebf4f8" stroke="#6e2d09" />
+            <!-- Glass outer lines -->
+            <path d="M 15 20 L 21.5 61 L 25.5 102 Q 50 107 74.5 102 L 78.5 61 L 85 20" fill="none" />
+            <!-- Middle ring -->
+            <path d="M 20 53 L 21.5 61 Q 50 66 78.5 61 L 80 53 Z" fill="rgba(255,160,80,0.15)" stroke="#6e2d09" />
+            <!-- Top Rim -->
+            <ellipse cx="50" cy="20" rx="35" ry="7" fill="none" />
+            <path d="M 15 20 Q 50 12 85 20" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" />
+            <!-- Shading Highlights -->
+            <path d="M 18.5 35 L 21.5 61 L 25.5 102 Q 35 103 37.5 104 L 35 62.5 Q 28 58 22 62 Z" fill="#9e4e1a" opacity="0.3" stroke="none" />
+            <path d="M 16.5 28 L 19.5 48" fill="none" stroke="#fff" stroke-width="3" opacity="0.7" />
+            <path d="M 28 72 L 30.5 98" fill="none" stroke="#fff" stroke-width="2" opacity="0.5" />
+          </g>
+        </svg>
+      </div>
+      <div class="num">${s.n}</div><h3>${s.en}</h3><div class="hi deva">${s.hi}</div><p>${s.p}</p>`;
       steps.appendChild(el);
     });
     const clippings = $('#clippings');
